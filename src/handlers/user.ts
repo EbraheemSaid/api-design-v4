@@ -9,7 +9,7 @@ export const createNewUser = async (req, res) => {
   });
 
   if (usernameIsNotUnique) {
-    res.status(401);
+    res.status(400);
     res.json({ message: "username must be unique." });
     return;
   }
@@ -33,7 +33,7 @@ export const signin = async (req, res) => {
   });
 
   if (!user) {
-    res.status(401);
+    res.status(400);
     res.json({ message: "Incorrect username or password." });
     return;
   }
@@ -45,7 +45,7 @@ export const signin = async (req, res) => {
   );
 
   if (!isMatchedPassword) {
-    res.status(401);
+    res.status(400);
     res.json({ message: "Incorrect username or password." });
     return;
   }

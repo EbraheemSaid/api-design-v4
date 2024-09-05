@@ -15,6 +15,7 @@ import {
   getOneUpdate,
   updateUpdate,
 } from "./handlers/update";
+import { log } from "console";
 
 const router = Router();
 
@@ -82,4 +83,8 @@ router.put(
 );
 router.delete("/updatepoint/:id", () => {});
 
+router.use((err, req, res, next) => {
+  res.status(500);
+  res.json({ message: "error in router handler" });
+});
 export default router;
